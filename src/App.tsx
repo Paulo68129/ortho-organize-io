@@ -13,6 +13,7 @@ import Consultas from "./pages/Consultas";
 import Horarios from "./pages/Horarios";
 import Procedimentos from "./pages/Procedimentos";
 import Financeiro from "./pages/Financeiro";
+import Prontuario from "./pages/Prontuario";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

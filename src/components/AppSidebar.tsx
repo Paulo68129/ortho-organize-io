@@ -6,6 +6,7 @@ import {
   Clock,
   FileText,
   DollarSign,
+  ClipboardList,
   LogOut,
 } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';

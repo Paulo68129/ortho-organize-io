@@ -14,7 +14,268 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      consultas: {
+        Row: {
+          created_at: string
+          data_hora: string
+          dentista_id: string
+          id: string
+          observacoes: string | null
+          paciente_id: string
+          prescricao: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          data_hora: string
+          dentista_id: string
+          id?: string
+          observacoes?: string | null
+          paciente_id: string
+          prescricao?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          data_hora?: string
+          dentista_id?: string
+          id?: string
+          observacoes?: string | null
+          paciente_id?: string
+          prescricao?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "consultas_dentista_id_fkey"
+            columns: ["dentista_id"]
+            isOneToOne: false
+            referencedRelation: "dentistas"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "consultas_paciente_id_fkey"
+            columns: ["paciente_id"]
+            isOneToOne: false
+            referencedRelation: "pacientes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      dentistas: {
+        Row: {
+          created_at: string
+          cro: string
+          email: string | null
+          especialidade: string | null
+          id: string
+          nome: string
+          telefone: string | null
+        }
+        Insert: {
+          created_at?: string
+          cro: string
+          email?: string | null
+          especialidade?: string | null
+          id?: string
+          nome: string
+          telefone?: string | null
+        }
+        Update: {
+          created_at?: string
+          cro?: string
+          email?: string | null
+          especialidade?: string | null
+          id?: string
+          nome?: string
+          telefone?: string | null
+        }
+        Relationships: []
+      }
+      financeiro: {
+        Row: {
+          consulta_id: string | null
+          created_at: string
+          data_pagamento: string | null
+          data_vencimento: string | null
+          id: string
+          status: string
+          tipo: string
+          valor: number
+        }
+        Insert: {
+          consulta_id?: string | null
+          created_at?: string
+          data_pagamento?: string | null
+          data_vencimento?: string | null
+          id?: string
+          status?: string
+          tipo: string
+          valor?: number
+        }
+        Update: {
+          consulta_id?: string | null
+          created_at?: string
+          data_pagamento?: string | null
+          data_vencimento?: string | null
+          id?: string
+          status?: string
+          tipo?: string
+          valor?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "financeiro_consulta_id_fkey"
+            columns: ["consulta_id"]
+            isOneToOne: false
+            referencedRelation: "consultas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      horarios: {
+        Row: {
+          created_at: string
+          dentista_id: string
+          dia_semana: number
+          disponivel: boolean
+          hora_fim: string
+          hora_inicio: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          dentista_id: string
+          dia_semana: number
+          disponivel?: boolean
+          hora_fim: string
+          hora_inicio: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          dentista_id?: string
+          dia_semana?: number
+          disponivel?: boolean
+          hora_fim?: string
+          hora_inicio?: string
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "horarios_dentista_id_fkey"
+            columns: ["dentista_id"]
+            isOneToOne: false
+            referencedRelation: "dentistas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pacientes: {
+        Row: {
+          cpf: string
+          created_at: string
+          data_nascimento: string | null
+          email: string | null
+          endereco_id: string | null
+          historico_medico: string | null
+          id: string
+          nome: string
+          telefone: string | null
+          updated_at: string
+        }
+        Insert: {
+          cpf: string
+          created_at?: string
+          data_nascimento?: string | null
+          email?: string | null
+          endereco_id?: string | null
+          historico_medico?: string | null
+          id?: string
+          nome: string
+          telefone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          cpf?: string
+          created_at?: string
+          data_nascimento?: string | null
+          email?: string | null
+          endereco_id?: string | null
+          historico_medico?: string | null
+          id?: string
+          nome?: string
+          telefone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      procedimentos: {
+        Row: {
+          created_at: string
+          descricao: string | null
+          id: string
+          nome: string
+          valor: number
+        }
+        Insert: {
+          created_at?: string
+          descricao?: string | null
+          id?: string
+          nome: string
+          valor?: number
+        }
+        Update: {
+          created_at?: string
+          descricao?: string | null
+          id?: string
+          nome?: string
+          valor?: number
+        }
+        Relationships: []
+      }
+      procedimentos_realizados: {
+        Row: {
+          consulta_id: string
+          created_at: string
+          id: string
+          observacoes: string | null
+          procedimento_id: string
+          valor_cobrado: number
+        }
+        Insert: {
+          consulta_id: string
+          created_at?: string
+          id?: string
+          observacoes?: string | null
+          procedimento_id: string
+          valor_cobrado?: number
+        }
+        Update: {
+          consulta_id?: string
+          created_at?: string
+          id?: string
+          observacoes?: string | null
+          procedimento_id?: string
+          valor_cobrado?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "procedimentos_realizados_consulta_id_fkey"
+            columns: ["consulta_id"]
+            isOneToOne: false
+            referencedRelation: "consultas"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "procedimentos_realizados_procedimento_id_fkey"
+            columns: ["procedimento_id"]
+            isOneToOne: false
+            referencedRelation: "procedimentos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

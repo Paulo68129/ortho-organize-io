@@ -33,10 +33,25 @@ export default function Financeiro() {
   const totalPendente = registros.filter(r => r.status === 'pendente').reduce((s, r) => s + r.valor, 0);
   const totalCobrado = registros.filter(r => r.tipo === 'cobranca').reduce((s, r) => s + r.valor, 0);
 
+  const formasPagamento = [
+    { value: 'pix', label: 'PIX' },
+    { value: 'cartao_credito', label: 'Cartão Crédito' },
+    { value: 'cartao_debito', label: 'Cartão Débito' },
+    { value: 'dinheiro', label: 'Dinheiro' },
+    { value: 'boleto', label: 'Boleto' },
+  ];
+
+  const formaLabel = (v: string | null) => formasPagamento.find(f => f.value === v)?.label || '-';
+
   async function updateStatus(id: string, status: string) {
     const update: Record<string, any> = { status };
     if (status === 'pago') update.data_pagamento = new Date().toISOString();
     await supabase.from('financeiro').update(update).eq('id', id);
+    load();
+  }
+
+  async function updateFormaPagamento(id: string, forma: string) {
+    await supabase.from('financeiro').update({ forma_pagamento: forma } as any).eq('id', id);
     load();
   }
 

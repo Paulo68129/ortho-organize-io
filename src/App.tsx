@@ -13,6 +13,7 @@ import Consultas from "./pages/Consultas";
 import Horarios from "./pages/Horarios";
 import Procedimentos from "./pages/Procedimentos";
 import Financeiro from "./pages/Financeiro";
+import Prontuario from "./pages/Prontuario";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ function ProtectedRoutes() {
         <Route path="/horarios" element={<Horarios />} />
         <Route path="/procedimentos" element={<Procedimentos />} />
         <Route path="/financeiro" element={<Financeiro />} />
+        <Route path="/prontuario" element={<Prontuario />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AppLayout>

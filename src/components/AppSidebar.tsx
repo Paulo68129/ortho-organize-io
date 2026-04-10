@@ -9,6 +9,7 @@ import {
   LogOut,
 } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
+import logo from '@/assets/logo.png';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import {
@@ -47,10 +48,10 @@ export function AppSidebar() {
           <SidebarGroupLabel className="text-sidebar-foreground/70">
             {!collapsed && (
               <div className="flex items-center gap-2 px-1 py-2">
-                <span className="text-lg font-bold text-sidebar-primary">🦷 Odontocare</span>
+                <img src={logo} alt="Alternative Odonto Care" className="h-10 w-auto" />
               </div>
             )}
-            {collapsed && <span className="text-lg">🦷</span>}
+            {collapsed && <img src={logo} alt="Logo" className="h-8 w-8 object-contain" />}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>

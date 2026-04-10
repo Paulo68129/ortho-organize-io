@@ -86,6 +86,7 @@ export default function Financeiro() {
             <TableRow>
               <TableHead>Tipo</TableHead>
               <TableHead>Valor</TableHead>
+              <TableHead>Forma Pagamento</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Vencimento</TableHead>
               <TableHead>Pagamento</TableHead>

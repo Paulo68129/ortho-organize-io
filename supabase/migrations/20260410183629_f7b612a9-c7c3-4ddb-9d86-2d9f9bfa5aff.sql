@@ -1,0 +1,1 @@
+ALTER TABLE public.financeiro ADD COLUMN forma_pagamento TEXT DEFAULT NULL;

@@ -33,10 +33,25 @@ export default function Financeiro() {
   const totalPendente = registros.filter(r => r.status === 'pendente').reduce((s, r) => s + r.valor, 0);
   const totalCobrado = registros.filter(r => r.tipo === 'cobranca').reduce((s, r) => s + r.valor, 0);
 
+  const formasPagamento = [
+    { value: 'pix', label: 'PIX' },
+    { value: 'cartao_credito', label: 'Cartão Crédito' },
+    { value: 'cartao_debito', label: 'Cartão Débito' },
+    { value: 'dinheiro', label: 'Dinheiro' },
+    { value: 'boleto', label: 'Boleto' },
+  ];
+
+  const formaLabel = (v: string | null) => formasPagamento.find(f => f.value === v)?.label || '-';
+
   async function updateStatus(id: string, status: string) {
     const update: Record<string, any> = { status };
     if (status === 'pago') update.data_pagamento = new Date().toISOString();
     await supabase.from('financeiro').update(update).eq('id', id);
+    load();
+  }
+
+  async function updateFormaPagamento(id: string, forma: string) {
+    await supabase.from('financeiro').update({ forma_pagamento: forma } as any).eq('id', id);
     load();
   }
 
@@ -71,6 +86,7 @@ export default function Financeiro() {
             <TableRow>
               <TableHead>Tipo</TableHead>
               <TableHead>Valor</TableHead>
+              <TableHead>Forma Pagamento</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Vencimento</TableHead>
               <TableHead>Pagamento</TableHead>
@@ -79,11 +95,21 @@ export default function Financeiro() {
           </TableHeader>
           <TableBody>
             {filtered.length === 0 ? (
-              <TableRow><TableCell colSpan={6} className="text-center text-muted-foreground">Nenhum registro encontrado.</TableCell></TableRow>
+              <TableRow><TableCell colSpan={7} className="text-center text-muted-foreground">Nenhum registro encontrado.</TableCell></TableRow>
             ) : filtered.map(r => (
               <TableRow key={r.id}>
                 <TableCell className="capitalize font-medium">{r.tipo}</TableCell>
                 <TableCell>R$ {r.valor.toFixed(2)}</TableCell>
+                <TableCell>
+                  <Select value={(r as any).forma_pagamento || ''} onValueChange={v => updateFormaPagamento(r.id, v)}>
+                    <SelectTrigger className="w-36 h-8"><SelectValue placeholder="Selecionar" /></SelectTrigger>
+                    <SelectContent>
+                      {formasPagamento.map(f => (
+                        <SelectItem key={f.value} value={f.value}>{f.label}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </TableCell>
                 <TableCell><Badge variant="outline" className={statusColors[r.status]}>{r.status}</Badge></TableCell>
                 <TableCell>{r.data_vencimento ? new Date(r.data_vencimento).toLocaleDateString('pt-BR') : '-'}</TableCell>
                 <TableCell>{r.data_pagamento ? new Date(r.data_pagamento).toLocaleDateString('pt-BR') : '-'}</TableCell>

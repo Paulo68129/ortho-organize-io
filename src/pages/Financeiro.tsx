@@ -95,11 +95,21 @@ export default function Financeiro() {
           </TableHeader>
           <TableBody>
             {filtered.length === 0 ? (
-              <TableRow><TableCell colSpan={6} className="text-center text-muted-foreground">Nenhum registro encontrado.</TableCell></TableRow>
+              <TableRow><TableCell colSpan={7} className="text-center text-muted-foreground">Nenhum registro encontrado.</TableCell></TableRow>
             ) : filtered.map(r => (
               <TableRow key={r.id}>
                 <TableCell className="capitalize font-medium">{r.tipo}</TableCell>
                 <TableCell>R$ {r.valor.toFixed(2)}</TableCell>
+                <TableCell>
+                  <Select value={(r as any).forma_pagamento || ''} onValueChange={v => updateFormaPagamento(r.id, v)}>
+                    <SelectTrigger className="w-36 h-8"><SelectValue placeholder="Selecionar" /></SelectTrigger>
+                    <SelectContent>
+                      {formasPagamento.map(f => (
+                        <SelectItem key={f.value} value={f.value}>{f.label}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </TableCell>
                 <TableCell><Badge variant="outline" className={statusColors[r.status]}>{r.status}</Badge></TableCell>
                 <TableCell>{r.data_vencimento ? new Date(r.data_vencimento).toLocaleDateString('pt-BR') : '-'}</TableCell>
                 <TableCell>{r.data_pagamento ? new Date(r.data_pagamento).toLocaleDateString('pt-BR') : '-'}</TableCell>

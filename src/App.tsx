@@ -44,6 +44,7 @@ function ProtectedRoutes() {
         <Route path="/horarios" element={<Horarios />} />
         <Route path="/procedimentos" element={<Procedimentos />} />
         <Route path="/financeiro" element={<Financeiro />} />
+        <Route path="/prontuario" element={<Prontuario />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AppLayout>

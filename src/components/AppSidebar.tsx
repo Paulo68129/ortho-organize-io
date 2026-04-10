@@ -34,6 +34,7 @@ const menuItems = [
   { title: 'Horários', url: '/horarios', icon: Clock },
   { title: 'Procedimentos', url: '/procedimentos', icon: FileText },
   { title: 'Financeiro', url: '/financeiro', icon: DollarSign },
+  { title: 'Prontuário', url: '/prontuario', icon: ClipboardList },
 ];
 
 export function AppSidebar() {

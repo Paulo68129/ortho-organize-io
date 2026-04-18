@@ -50,7 +50,7 @@ export function AppSidebar() {
           <SidebarGroupLabel className="text-sidebar-foreground/70">
             {!collapsed && (
               <div className="flex items-center gap-2 px-1 py-2">
-                <img src={logo} alt="Alternative Odonto Care" className="h-10 w-auto" />
+                <img src={logo} alt="Dra. Roberta Machado" className="h-10 w-auto" />
               </div>
             )}
             {collapsed && <img src={logo} alt="Logo" className="h-8 w-8 object-contain" />}

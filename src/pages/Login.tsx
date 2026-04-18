@@ -36,8 +36,8 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center bg-muted p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <img src={logo} alt="Alternative Odonto Care" className="h-20 w-auto mx-auto mb-2" />
-          <CardTitle className="text-2xl text-primary">Alternative Odonto Care</CardTitle>
+          <img src={logo} alt="Dra. Roberta Machado" className="h-20 w-auto mx-auto mb-2" />
+          <CardTitle className="text-2xl text-primary">Dra. Roberta Machado</CardTitle>
           <CardDescription>Sistema de Gestão Odontológica</CardDescription>
         </CardHeader>
         <CardContent>

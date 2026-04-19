@@ -55,7 +55,7 @@ export default function Dashboard() {
       .eq('status', 'agendada')
       .order('data_hora', { ascending: true })
       .limit(5);
-    setProximasConsultas(data || []);
+    setProximasConsultas((data as any) || []);
   }
 
   return (

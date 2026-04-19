@@ -24,7 +24,7 @@ export default function Financeiro() {
       .from('financeiro')
       .select('*, consulta:consultas(*, paciente:pacientes(nome), dentista:dentistas(nome))')
       .order('created_at', { ascending: false });
-    setRegistros(data || []);
+    setRegistros((data as any) || []);
   }
 
   const filtered = registros.filter(r => statusFilter === 'all' || r.status === statusFilter);
@@ -46,7 +46,7 @@ export default function Financeiro() {
   async function updateStatus(id: string, status: string) {
     const update: Record<string, any> = { status };
     if (status === 'pago') update.data_pagamento = new Date().toISOString();
-    await supabase.from('financeiro').update(update).eq('id', id);
+    await supabase.from('financeiro').update(update as any).eq('id', id);
     load();
   }
 

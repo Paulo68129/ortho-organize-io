@@ -36,7 +36,7 @@ export default function Consultas() {
       .from('consultas')
       .select('*, paciente:pacientes(*), dentista:dentistas(*)')
       .order('data_hora', { ascending: false });
-    setConsultas(data || []);
+    setConsultas((data as any) || []);
   }
 
   async function loadRefs() {

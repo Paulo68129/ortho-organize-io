@@ -15,15 +15,26 @@ export default function Login() {
   const { signIn, signUp } = useAuth();
   const { toast } = useToast();
 
+  const ALLOWED_EMAILS = ['hankspqd6812925@gmail.com', 'drarobertamachado.opne@gmail.com'];
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const normalizedEmail = email.trim().toLowerCase();
+    if (!ALLOWED_EMAILS.includes(normalizedEmail)) {
+      toast({
+        title: 'Acesso negado',
+        description: 'Este e-mail não está autorizado a acessar o sistema.',
+        variant: 'destructive',
+      });
+      return;
+    }
     setLoading(true);
     try {
       if (isSignUp) {
-        await signUp(email, password);
+        await signUp(normalizedEmail, password);
         toast({ title: 'Conta criada!', description: 'Verifique seu email para confirmar.' });
       } else {
-        await signIn(email, password);
+        await signIn(normalizedEmail, password);
       }
     } catch (error: any) {
       toast({ title: 'Erro', description: error.message, variant: 'destructive' });

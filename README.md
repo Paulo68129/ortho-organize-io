@@ -131,4 +131,4 @@ O sistema utiliza as seguintes tabelas:
 
 ---
 
-Desenvolvido com ❤️ utilizando [Lovable](https://lovable.dev)
+Desenvolvido com ❤️

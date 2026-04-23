@@ -1,134 +1,117 @@
-# 🦷 OdontoCare - Sistema de Gestão Odontológica
+🦷 OdontoCare — Sistema de Gestão para Clínicas Odontológicas
+OdontoCare é um sistema web completo para gestão de clínicas odontológicas, desenvolvido para organizar pacientes, consultas, prontuários clínicos e controles financeiros, com foco em usabilidade, segurança de dados e escalabilidade.
+O projeto foi concebido para uso real em clínicas, lidando com dados sensíveis de saúde, múltiplos usuários e regras de negócio específicas do setor odontológico.
 
-Sistema completo de gestão para clínicas odontológicas, desenvolvido com tecnologias modernas para facilitar o gerenciamento de pacientes, consultas, prontuários e financeiro.
+🎯 Problema Resolvido
+Clínicas odontológicas frequentemente enfrentam:
 
-![React](https://img.shields.io/badge/React-18-blue?logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
-![Vite](https://img.shields.io/badge/Vite-5-purple?logo=vite)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-blue?logo=tailwindcss)
+Falta de centralização de informações clínicas
+Controle manual de agendas e atendimentos
+Dificuldades no gerenciamento financeiro
+Risco no tratamento de dados sensíveis de pacientes
 
-## 📋 Funcionalidades
+O OdontoCare resolve esses problemas através de uma plataforma única, digital e segura.
 
-### 👤 Gestão de Pacientes
-- Cadastro completo com CPF, telefone, e-mail e data de nascimento
-- Pesquisa e listagem de pacientes
-- Histórico médico vinculado
+✅ Funcionalidades Principais
+👤 Gestão de Pacientes
 
-### 📅 Agendamento de Consultas
-- Agendamento com seleção de dentista e paciente
-- Controle de status (agendada, confirmada, concluída, cancelada)
-- Observações e prescrições por consulta
+Cadastro completo (CPF, telefone, e‑mail, data de nascimento)
+Pesquisa e listagem de pacientes
+Histórico médico vinculado
 
-### 🦷 Gestão de Dentistas
-- Cadastro com CRO e especialidade
-- Gerenciamento de horários disponíveis por dia da semana
+📅 Agendamento de Consultas
 
-### 📄 Prontuário Eletrônico
-- **Anamnese**: queixa principal, histórico médico, alergias, medicamentos em uso e hábitos
-- **Evolução Clínica**: registro cronológico de atendimentos e plano de tratamento
-- **Prescrições**: medicamento, dosagem, frequência, duração e observações
+Agendamento com seleção de dentista e paciente
+Controle de status: agendada, concluída, cancelada
+Observações clínicas e prescrições por consulta
 
-### 💰 Módulo Financeiro
-- Registro de receitas e despesas
-- Formas de pagamento: PIX, Cartão de Crédito, Cartão de Débito, Dinheiro, Boleto
-- Controle de status (pendente, pago, cancelado)
-- Datas de vencimento e pagamento
+🦷 Gestão de Dentistas
 
-### 🏥 Procedimentos
-- Catálogo de procedimentos odontológicos com valores
-- Vínculo de procedimentos realizados por consulta
+Cadastro com CRO e especialidade
+Configuração de horários de atendimento por dia da semana
 
-### ⏰ Horários
-- Configuração de disponibilidade por dentista
-- Grade horária semanal
+📄 Prontuário Eletrônico
 
-## 🛠️ Tecnologias Utilizadas
+Anamnese: queixa principal, histórico médico, alergias, medicamentos e hábitos
+Evolução clínica: registro cronológico de atendimentos e planos de tratamento
+Prescrições: medicamento, dosagem, frequência, duração e observações
 
-| Tecnologia | Descrição |
-|---|---|
-| **React 18** | Biblioteca para construção da interface |
-| **TypeScript 5** | Tipagem estática para JavaScript |
-| **Vite 5** | Build tool e dev server |
-| **Tailwind CSS 3** | Framework CSS utilitário |
-| **shadcn/ui** | Componentes UI acessíveis e customizáveis |
-| **React Router DOM** | Roteamento SPA |
-| **React Query** | Gerenciamento de estado assíncrono |
-| **Recharts** | Gráficos e visualizações |
-| **React Hook Form + Zod** | Formulários com validação |
-| **Supabase** | Backend (autenticação, banco de dados, RLS) |
-| **Sonner** | Notificações toast |
-| **Lucide React** | Ícones |
-| **date-fns** | Manipulação de datas |
+💰 Módulo Financeiro
 
-## 📁 Estrutura do Projeto
+Registro de receitas e despesas
+Formas de pagamento: PIX, crédito, débito, dinheiro e boleto
+Controle de status: pendente, pago, cancelado
+Datas de vencimento e pagamento
 
-```
-src/
-├── components/
-│   ├── ui/              # Componentes shadcn/ui
-│   ├── AppLayout.tsx     # Layout principal com sidebar
-│   ├── AppSidebar.tsx    # Menu lateral de navegação
-│   ├── NavLink.tsx       # Links de navegação
-│   └── StatCard.tsx      # Cards de estatísticas
-├── contexts/
-│   └── AuthContext.tsx   # Contexto de autenticação
-├── hooks/                # Hooks customizados
-├── integrations/
-│   └── supabase/         # Cliente e tipos do Supabase
-├── pages/
-│   ├── Dashboard.tsx     # Painel principal
-│   ├── Pacientes.tsx     # Gestão de pacientes
-│   ├── Consultas.tsx     # Agendamento de consultas
-│   ├── Dentistas.tsx     # Cadastro de dentistas
-│   ├── Prontuario.tsx    # Prontuário eletrônico
-│   ├── Financeiro.tsx    # Módulo financeiro
-│   ├── Procedimentos.tsx # Catálogo de procedimentos
-│   ├── Horarios.tsx      # Grade de horários
-│   └── Login.tsx         # Tela de autenticação
-├── types/                # Tipos TypeScript
-└── lib/                  # Utilitários
-```
+🏥 Procedimentos
 
-## 🚀 Como Executar
+Catálogo de procedimentos odontológicos com valores
+Vínculo de procedimentos realizados por consulta
 
-```bash
-# Clone o repositório
-git clone <url-do-repositorio>
 
-# Instale as dependências
-npm install
+🛠️ Arquitetura e Tecnologias
+Frontend
 
-# Execute o servidor de desenvolvimento
-npm run dev
-```
+React 18
+TypeScript
+Vite
+Tailwind CSS
+shadcn/ui
+React Router DOM
+React Query
+React Hook Form + Zod
+Recharts
+date-fns
 
-O projeto estará disponível em `http://localhost:5173`.
+Backend / Infraestrutura
 
-## 🔐 Segurança
+Supabase
 
-- Autenticação via Supabase Auth
-- Row Level Security (RLS) em todas as tabelas
-- Acesso restrito a usuários autenticados
+Autenticação
+Banco de dados PostgreSQL
+Row Level Security (RLS)
 
-## 📊 Banco de Dados
 
-O sistema utiliza as seguintes tabelas:
 
-- `pacientes` — Cadastro de pacientes
-- `dentistas` — Cadastro de dentistas
-- `consultas` — Agendamentos e consultas
-- `procedimentos` — Catálogo de procedimentos
-- `procedimentos_realizados` — Procedimentos executados por consulta
-- `anamneses` — Fichas de anamnese
-- `evolucoes_clinicas` — Evoluções clínicas
-- `prescricoes` — Prescrições médicas
-- `financeiro` — Registros financeiros
-- `horarios` — Horários de atendimento
 
-## ✍️ Autor
+🔐 Segurança
 
-**Paulo Roberto Silva de Oliveira Junior**
+Autenticação via Supabase Auth
+Row Level Security (RLS) aplicada em todas as tabelas
+Isolamento de dados por usuário
+Acesso restrito a usuários autenticados
 
----
 
-Desenvolvido com ❤️
+O projeto foi desenvolvido considerando boas práticas de segurança para sistemas que lidam com informações clínicas sensíveis.
+
+
+📊 Estrutura do Banco de Dados
+
+pacientes
+dentistas
+consultas
+procedimentos
+procedimentos_realizados
+anamneses
+evolucoes_clinicas
+prescricoes
+financeiro
+horarios
+
+
+📁 Estrutura do Projeto
+Plain Textsrc/├── components/│   ├── ui/                # Componentes shadcn/ui│   ├── AppLayout.tsx      # Layout principal│   ├── AppSidebar.tsx     # Navegação lateral│   └── StatCard.tsx       # Cards de estatísticas├── contexts/│   └── AuthContext.tsx    # Autenticação├── hooks/                 # Hooks customizados├── integrations/│   └── supabase/          # Cliente e tipos Supabase├── pages/│   ├── Dashboard.tsx│   ├── Pacientes.tsx│   ├── Consultas.tsx│   ├── Dentistas.tsx│   ├── Prontuario.tsx│   ├── Financeiro.tsx│   ├── Procedimentos.tsx│   ├── Horarios.tsx│   └── Login.tsx├── types/                 # Tipos globais└── lib/                   # UtilitáriosMostrar mais linhas
+
+🚀 Executando Localmente
+Plain Textgit clone <url-do-repositorio>npm installnpm run dev``Mostrar mais linhas
+A aplicação estará disponível em:
+👉 http://localhost:5173
+
+📌 Status do Projeto
+✅ Aplicação funcional
+✅ Arquitetura preparada para evolução
+✅ Em uso / pronta para produção
+
+✍️ Autor
+Paulo Roberto Silva de Oliveira Júnior
+Desenvolvido com foco em engenharia de software, segurança e sistemas de gestão reais.

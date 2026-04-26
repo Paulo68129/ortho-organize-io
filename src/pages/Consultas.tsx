@@ -140,6 +140,7 @@ export default function Consultas() {
           <TableHeader>
             <TableRow>
               <TableHead>Paciente</TableHead>
+              <TableHead>Contato</TableHead>
               <TableHead>Dentista</TableHead>
               <TableHead>Data/Hora</TableHead>
               <TableHead>Status</TableHead>
@@ -148,11 +149,22 @@ export default function Consultas() {
           </TableHeader>
           <TableBody>
             {filtered.length === 0 ? (
-              <TableRow><TableCell colSpan={5} className="text-center text-muted-foreground">Nenhuma consulta encontrada.</TableCell></TableRow>
+              <TableRow><TableCell colSpan={6} className="text-center text-muted-foreground">Nenhuma consulta encontrada.</TableCell></TableRow>
             ) : filtered.map(c => (
               <TableRow key={c.id}>
-                <TableCell className="font-medium">{c.paciente?.nome}</TableCell>
-                <TableCell>{c.dentista?.nome}</TableCell>
+                <TableCell className="font-medium">
+                  <div className="flex flex-col">
+                    <span>{c.paciente?.nome ?? '—'}</span>
+                    {c.paciente?.cpf && <span className="text-xs text-muted-foreground">CPF: {c.paciente.cpf}</span>}
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex flex-col text-xs text-muted-foreground">
+                    {c.paciente?.telefone && <span>{c.paciente.telefone}</span>}
+                    {c.paciente?.email && <span>{c.paciente.email}</span>}
+                  </div>
+                </TableCell>
+                <TableCell>{c.dentista?.nome ?? '—'}</TableCell>
                 <TableCell>
                   {new Date(c.data_hora).toLocaleDateString('pt-BR')} {new Date(c.data_hora).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}
                 </TableCell>

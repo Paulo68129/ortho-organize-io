@@ -55,14 +55,18 @@ export default function Consultas() {
   });
 
   async function handleSave() {
-    try {
-      await supabase.from('consultas').insert(form);
-      toast({ title: 'Consulta agendada!' });
-      setOpen(false);
-      load();
-    } catch (error: any) {
-      toast({ title: 'Erro', description: error.message, variant: 'destructive' });
+    if (!form.paciente_id || !form.dentista_id || !form.data_hora) {
+      toast({ title: 'Preencha paciente, dentista e data/hora', variant: 'destructive' });
+      return;
     }
+    const { error } = await supabase.from('consultas').insert(form);
+    if (error) {
+      toast({ title: 'Erro ao agendar', description: error.message, variant: 'destructive' });
+      return;
+    }
+    toast({ title: 'Consulta agendada!' });
+    setOpen(false);
+    await load();
   }
 
   async function updateStatus(id: string, status: string) {
@@ -136,6 +140,7 @@ export default function Consultas() {
           <TableHeader>
             <TableRow>
               <TableHead>Paciente</TableHead>
+              <TableHead>Contato</TableHead>
               <TableHead>Dentista</TableHead>
               <TableHead>Data/Hora</TableHead>
               <TableHead>Status</TableHead>
@@ -144,11 +149,22 @@ export default function Consultas() {
           </TableHeader>
           <TableBody>
             {filtered.length === 0 ? (
-              <TableRow><TableCell colSpan={5} className="text-center text-muted-foreground">Nenhuma consulta encontrada.</TableCell></TableRow>
+              <TableRow><TableCell colSpan={6} className="text-center text-muted-foreground">Nenhuma consulta encontrada.</TableCell></TableRow>
             ) : filtered.map(c => (
               <TableRow key={c.id}>
-                <TableCell className="font-medium">{c.paciente?.nome}</TableCell>
-                <TableCell>{c.dentista?.nome}</TableCell>
+                <TableCell className="font-medium">
+                  <div className="flex flex-col">
+                    <span>{c.paciente?.nome ?? '—'}</span>
+                    {c.paciente?.cpf && <span className="text-xs text-muted-foreground">CPF: {c.paciente.cpf}</span>}
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex flex-col text-xs text-muted-foreground">
+                    {c.paciente?.telefone && <span>{c.paciente.telefone}</span>}
+                    {c.paciente?.email && <span>{c.paciente.email}</span>}
+                  </div>
+                </TableCell>
+                <TableCell>{c.dentista?.nome ?? '—'}</TableCell>
                 <TableCell>
                   {new Date(c.data_hora).toLocaleDateString('pt-BR')} {new Date(c.data_hora).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}
                 </TableCell>

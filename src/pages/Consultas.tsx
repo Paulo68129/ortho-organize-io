@@ -59,14 +59,21 @@ export default function Consultas() {
       toast({ title: 'Preencha paciente, dentista e data/hora', variant: 'destructive' });
       return;
     }
-    const { error } = await supabase.from('consultas').insert(form);
+    const { data, error } = await supabase
+      .from('consultas')
+      .insert(form)
+      .select('*, paciente:pacientes(*), dentista:dentistas(*)')
+      .single();
     if (error) {
       toast({ title: 'Erro ao agendar', description: error.message, variant: 'destructive' });
       return;
     }
+    if (data) {
+      setConsultas(prev => [data as any, ...prev]);
+    }
     toast({ title: 'Consulta agendada!' });
     setOpen(false);
-    await load();
+    load();
   }
 
   async function updateStatus(id: string, status: string) {

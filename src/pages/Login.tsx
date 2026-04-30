@@ -15,19 +15,9 @@ export default function Login() {
   const { signIn, signUp } = useAuth();
   const { toast } = useToast();
 
-  const ALLOWED_EMAILS = ['hankspqd6812925@gmail.com', 'drarobertamachado.opne@gmail.com'];
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const normalizedEmail = email.trim().toLowerCase();
-    if (!ALLOWED_EMAILS.includes(normalizedEmail)) {
-      toast({
-        title: 'Acesso negado',
-        description: 'Este e-mail não está autorizado a acessar o sistema.',
-        variant: 'destructive',
-      });
-      return;
-    }
     setLoading(true);
     try {
       if (isSignUp) {

@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
 import logo from '@/assets/logo.png';
+import mothersDay from '@/assets/mothers-day.png';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import {
@@ -75,6 +76,18 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+        {!collapsed && (
+          <div className="mt-4 flex flex-col items-center px-3 pb-2">
+            <img
+              src={mothersDay}
+              alt="Homenagem ao Dia das Mães"
+              className="h-24 w-auto opacity-95 drop-shadow-md"
+            />
+            <span className="mt-2 text-center text-xs font-medium text-sidebar-foreground/80">
+              Feliz Dia das Mães 💐
+            </span>
+          </div>
+        )}
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>

@@ -7,12 +7,10 @@ import {
   FileText,
   DollarSign,
   ClipboardList,
-  LogOut,
 } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
 import logo from '@/assets/logo.png';
 import { useLocation } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
 import {
   Sidebar,
   SidebarContent,

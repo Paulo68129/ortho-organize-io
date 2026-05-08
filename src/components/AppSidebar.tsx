@@ -7,12 +7,10 @@ import {
   FileText,
   DollarSign,
   ClipboardList,
-  LogOut,
 } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
 import logo from '@/assets/logo.png';
 import { useLocation } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
 import {
   Sidebar,
   SidebarContent,
@@ -22,7 +20,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarFooter,
+  
   useSidebar,
 } from '@/components/ui/sidebar';
 
@@ -41,7 +39,6 @@ export function AppSidebar() {
   const { state } = useSidebar();
   const collapsed = state === 'collapsed';
   const location = useLocation();
-  const { signOut } = useAuth();
 
   return (
     <Sidebar collapsible="icon">
@@ -76,16 +73,6 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton onClick={signOut} className="hover:bg-sidebar-accent">
-              <LogOut className="mr-2 h-4 w-4" />
-              {!collapsed && <span>Sair</span>}
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
     </Sidebar>
   );
 }

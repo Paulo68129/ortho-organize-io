@@ -295,10 +295,12 @@ export default function Dashboard() {
           </h1>
           <p className="text-muted-foreground">Visão geral em tempo real da clínica</p>
         </div>
-        <Badge variant="outline" className="gap-1 border-success/40 text-success">
-          <span className="h-2 w-2 rounded-full bg-success animate-pulse" />
-          {loading ? 'Atualizando...' : 'Ao vivo'}
-        </Badge>
+        {loading && (
+          <Badge variant="outline" className="gap-1 border-success/40 text-success">
+            <span className="h-2 w-2 rounded-full bg-success animate-pulse" />
+            Atualizando...
+          </Badge>
+        )}
       </div>
 
       {/* KPI cards */}

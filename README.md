@@ -1,3 +1,4 @@
+
 🦷 OdontoCare — Sistema de Gestão para Clínicas Odontológicas
 OdontoCare é um sistema web completo para gestão de clínicas odontológicas, desenvolvido para organizar pacientes, consultas, prontuários clínicos e controles financeiros, com foco em usabilidade, segurança de dados e escalabilidade.
 O projeto foi concebido para uso real em clínicas, lidando com dados sensíveis de saúde, múltiplos usuários e regras de negócio específicas do setor odontológico.
